@@ -23,11 +23,11 @@ const isPalindrom = (string) => {
   return normalizedString === stringReversed;
 };
 //строка является палиндромом
-console.log(isPalindrom('И у облаков вокал Боуи'));
+isPalindrom ('И у облаков вокал Боуи');
 // и это палиндром
-console.log(isPalindrom('топот'));
+isPalindrom ('топот');
 //а это нет
-console.log(isPalindrom('палиндром'));
+isPalindrom ('палиндром');
 
 
 
@@ -43,5 +43,5 @@ result += normalizedString[i];
 }
 return result ? +result : NaN;
 };
-returnsDigits('2023 год 12 месяц')
-console.log(returnsDigits('2023 год 12 месяц'));
+returnsDigits ('2023 год 12 месяц')
+
