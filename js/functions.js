@@ -1,9 +1,7 @@
 
 //Функция для проверки длины строки
 
-const checkStringLength = (string, maxStringLength) => {
-  return string.length <= maxStringLength
-};
+const checkStringLength = (string, maxStringLength) => string.length <= maxStringLength;
 
 // строка короче 20 символов
 checkStringLength('Одри умная кисонька', 20);
@@ -11,11 +9,10 @@ checkStringLength('Одри умная кисонька', 20);
 checkStringLength('Одри умная кисонька и она любит собак', 20);
 
 
-
 // Функция для проверки, является ли строка палиндромом
 
 const isPalindrom = (string) => {
-  let normalizedString = string.replaceAll(' ', '').toLowerCase();
+  const normalizedString = string.replaceAll(' ', '').toLowerCase();
   let stringReversed = '';
   for (let i = normalizedString.length - 1; i >= 0; i--) {
     stringReversed += normalizedString[i];
@@ -30,12 +27,11 @@ isPalindrom('топот');
 isPalindrom('палиндром');
 
 
-
 // Функция принимает строку и возвращает число
 
 const returnsDigits = (string) => {
   const normalizedString = string.replaceAll(' ', '');
-  let result = ''
+  let result = '';
   for (let i = 0; i < normalizedString.length; i++) {
     if (!Number.isNaN(parseInt(normalizedString[i], 10))) {
       result += normalizedString[i];
@@ -43,5 +39,8 @@ const returnsDigits = (string) => {
   }
   return result ? +result : NaN;
 };
-returnsDigits('2023 год 12 месяц')
-
+returnsDigits('2023 год 12 месяц');
+returnsDigits('100 способов завести кошку и 2 мышей');
+returnsDigits('агент кошька 007');
+returnsDigits('1 кошка и 0.5 собаки');
+returnsDigits('две кошки');
