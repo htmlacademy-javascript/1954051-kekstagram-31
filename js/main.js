@@ -33,8 +33,8 @@ const MESSAGES = [
 
 const DESCRIPTIONS = [
   'что-то на белом фоне',
-  'что ты такое?',
-  'как это развидеть',
+  'что-то на сером фоне',
+  'просто изображение',
 ];
 
 const MIN_COMMENTS = 0;
@@ -66,20 +66,15 @@ const getUniqueNumber = (min, max) => {
 
 const createRandomElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const createComments = () => {
-  const comments = [];
-  const commentsCount = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
-  for (let j = 0; j <= commentsCount; j++) {
-    const comment = {
-      id: getRandomInteger(0, 1000),
-      name: createRandomElement(NAMES),
-      message: createRandomElement(MESSAGES),
-      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    };
-    comments.push(comment);
-  }
-  return comments;
-};
+
+const createComments = () => ({
+  id: getRandomInteger(0, 500),
+  name: createRandomElement(NAMES),
+  message: createRandomElement(MESSAGES),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+});
+
+//console.log(createComments());
 createComments();
 
 const createPhotoDescriptions = () => {
@@ -91,11 +86,12 @@ const createPhotoDescriptions = () => {
       url: `photos/${i}.jpg`,
       description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS.length - 1)],
       likes: getRandomInteger(MIN_LIKES, MAX_LIKES),
-      comments: createComments(),
+      comments: Array.from({ length: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS) }, createComments),
     };
     photos.push(photo);
   }
   return photos;
 };
 createPhotoDescriptions();
+// console.log(createPhotoDescriptions());
 
