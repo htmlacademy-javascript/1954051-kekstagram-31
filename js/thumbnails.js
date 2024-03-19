@@ -13,24 +13,6 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 
 const picturesArea = document.querySelector('.pictures'); // место, куда записываем сгенерированные фото
 
-// const photoDescriptions = createPhotoDescriptions();
-// const picturesFragment = document.createDocumentFragment();
-
-/* const photoDescriptions = (photo) => {
-  const picturesFragment = document.createDocumentFragment();
-  photoDescriptions.forEach((photo) => {
-    pictureClone = pictureTemplate.cloneNode(true);
-    pictureClone.querySelector('.picture__img').src = photo.url;
-    pictureClone.querySelector('.picture__img').alt = photo.description;
-    pictureClone.querySelector('.picture__likes').textContent = photo.comments;
-    pictureClone.querySelector('.picture__comments').textContent = photo.comments;
-    picturesFragment.appendChild(pictureClone);
-  }
-  );
-  picturesArea.appendChild(pictureClone);
-}
-export { photoDescriptions }; */
-
 const photoDescriptions = (photo) => {
   const picturesFragment = document.createDocumentFragment();
   photo.forEach(({url, description, likes, comments}) => {
