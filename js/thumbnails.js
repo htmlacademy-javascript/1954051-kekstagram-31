@@ -18,7 +18,7 @@ const picturesArea = document.querySelector('.pictures'); // место, куд�
 
 /* const photoDescriptions = (photo) => {
   const picturesFragment = document.createDocumentFragment();
-  photoDescriptions.forEach((photo) {
+  photoDescriptions.forEach((photo) => {
     pictureClone = pictureTemplate.cloneNode(true);
     pictureClone.querySelector('.picture__img').src = photo.url;
     pictureClone.querySelector('.picture__img').alt = photo.description;

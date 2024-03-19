@@ -44,3 +44,13 @@ returnsDigits('100 способов завести кошку и 2 мышей');
 returnsDigits('агент кошька 007');
 returnsDigits('1 кошка и 0.5 собаки');
 returnsDigits('две кошки');
+
+
+// Делу — время
+function ChecksOvertime(dayStart, dayEnd, meetingStart, meetingDuration) {
+  const arrFromData = [[...dayStart.split(':')], [...dayEnd.split(':')], [...meetingStart.split(':')]];
+  const timeInMinutes = arrFromData.map((item) => Number(item[0]) * 60 + Number(item[1]));
+  const [dayStartInMinutes, dayEndInMinutes, meetingStartInMinutes] = timeInMinutes;
+  return (dayStartInMinutes <= meetingStartInMinutes) && (meetingStartInMinutes + meetingDuration <= dayEndInMinutes);
+}
+ChecksOvertime('8:0', '10:0', '8:00', 90);
