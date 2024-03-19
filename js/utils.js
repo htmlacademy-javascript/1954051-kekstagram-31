@@ -25,6 +25,5 @@ const getUniqueNumber = (min, max) => {
 export {
   getRandomInteger,
   createRandomElement,
-  getUniqueNumber
+  getUniqueNumber,
 };
-
