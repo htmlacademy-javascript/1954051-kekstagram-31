@@ -22,8 +22,11 @@ const getUniqueNumber = (min, max) => {
   };
 };
 
+const isEscapeKey = (evt) => evt.key === 'Escape'; // проверяем нажатия на Esc
+
 export {
   getRandomInteger,
   createRandomElement,
   getUniqueNumber,
+  isEscapeKey, // экспортируем в modal.js
 };
