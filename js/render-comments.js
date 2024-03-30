@@ -1,51 +1,57 @@
-const COUNT_STEP = 5;
-let currentCount = 0;
-let comments = [];
+const commentsContainerElement = document.querySelector('.social__comments');
+const commentTemplate = document.querySelector('.social__comment');
+const statisticShownElement = document.querySelector('.social__comment-shown-count');
+const statisticTotalElement = document.querySelector('.social__comment-total-count');
+const loaderButton = document.querySelector('.comments-loader');
 
-const userModalElement = document.querySelector('.big-picture');
-const socialCommentsElement = userModalElement.querySelector('social__comments');
-const socialCommentTemplate = socialCommentsElement.querySelector('social__comment');
-const commentsCountElement = userModalElement.querySelector('social__comment-count');
-const commentsLoaderElement = userModalElement.querySelector('social__comments-loader');
-socialCommentsElement.innerHTML = '';
+const COMMENT_STEPS = 5;
 
-const renderNextComments = () => {
-  const socialCommentsFramgent = document.createDocumentFragment();
-  const renderedComments = comments.slice(currentCount, currentCount + COUNT_STEP);
-  const renderedCommentsLength = renderedComments.length + currentCount;
+const localComments = [];
+let renderedComments = 0;
+let totalComments = 0;
 
-  renderedComments.forEach((comment) => {
-    const socialCommmentElement = socialCommentTemplate.cloneNode(true);
+const renderComment = (comment) => {
+  const commentElement = commentTemplate.cloneNode(true);
+  commentElement.querySelector('.social__picture').src = comment.avatar;
+  commentElement.querySelector('.social__text').textContent = comment.message;
+  renderedComments++;
+  return commentElement;
+};
 
-    SocialCommmentElement.querySelector('.social__picture').src = comment.avatar;
-    socialCommentElement.querySelector('.social__picture').alt = comment.name;
-    socialCommentElement.querySelector('.social__text').textContent = comment.message;
-
-    socialCommentsFramgent.appendChild(socialCommmentElement);
-  });
-
-  socialCommentsElement.appendChild(socialCommentsFramgent);
-  commentsCountElement.firstChild.textContent = `${renderedCommentsLength} из `;
-  commentsCountElement.querySelector('.comments-count').textContent = comments.length;
-
-  if (renderedCommentsLength >= comments.length) {
-    commentsLoaderElement.classList.add('hidden');
+const renderLoader = () => {
+  if (renderedComments < totalComments) {
+    loaderButton.classList.remove('hidden');
+  } else {
+    loaderButton.classList.add('hidden');
   }
-  currentCount += COUNT_STEP;
 };
 
-const clearComments = () => {
-  currentCount = 0;
-  socialCommentsElement.innerHTML = '';
-  commentsLoaderElement.classList.remove('hidden');
-  commentsLoaderElement.removeEventListener('click, renderNextComments');
+const renderStatistic = () => {
+  statisticShownElement.textContent = renderedComments;
+  statisticTotalElement.textContent = totalComments;
 };
 
-const renderComments = (currentPhotoComments) => {
-  comments = currentPhotoComments;
-
-  renderNextComments();
-  commentsLoaderElement.addEventListener('click', renderNextComments);
+const renderComments = () => {
+  const fragment = document.createDocumentFragment();
+  localComments.splice(0, COMMENT_STEPS).forEach((comment) => {
+    fragment.append(renderComment(comment));
+  });
+  commentsContainerElement.append(fragment);
+  renderStatistic();
+  renderLoader();
 };
 
-export { clearComments, renderComments, commentsLoaderElement };
+loaderButton.addEventListener('click', () => {
+  renderComments();
+});
+
+const commentsInit = (data) => {
+  localComments.length = 0;
+  localComments.push(...data.slice());
+  renderedComments = 0;
+  totalComments = localComments.length;
+  commentsContainerElement.innerHTML = '';
+  renderComments();
+};
+
+export { commentsInit };

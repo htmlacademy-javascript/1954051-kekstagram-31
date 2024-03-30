@@ -2,8 +2,8 @@ import { createPhotoDescriptions } from './data.js';
 createPhotoDescriptions();
 
 import { photoDescriptions } from './thumbnails.js';
-const photo = createPhotoDescriptions();
-photoDescriptions(photo);
+const photos = createPhotoDescriptions();
+photoDescriptions(photos);
 
 
 // import { openUserModal } from './modal.js';
