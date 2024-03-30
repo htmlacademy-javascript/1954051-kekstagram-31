@@ -29,7 +29,7 @@ const photoDescriptions = (photos) => {
 picturesArea.addEventListener('click', (evt) => {
   const currentPictureElement = evt.target.closest('.picture');
   if (currentPictureElement) {
-    evt.preventDefault(); // предотвращаем открытие в новом окне
+    evt.preventDefault();
     const currentId = Number(currentPictureElement.dataset.pictureId);
     const currentPhotoData = localPhotos.find((item) => item.id === currentId);
     openUserModal(currentPhotoData);
@@ -37,4 +37,4 @@ picturesArea.addEventListener('click', (evt) => {
 });
 
 
-export { photoDescriptions };
+export { photoDescriptions};

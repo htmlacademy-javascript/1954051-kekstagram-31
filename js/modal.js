@@ -2,10 +2,10 @@ import { isEscapeKey } from './utils';
 import { commentsInit } from './render-comments.js';
 
 //ищем, откуда берем модалку
-const picturesArea = document.querySelector('.pictures'); // место, куда мы положили сгенерированные миниатюры
+// const picturesArea = document.querySelector('.pictures'); // место, куда мы положили сгенерированные миниатюры
 const userModalElement = document.querySelector('.big-picture'); // модальное окно с полноразмерным фото
 const userModalCloseElement = document.querySelector('.big-picture__cancel'); // кнопка закрытия модального окна
-const likesCount = userModalElement.querySelector('.likes-count');
+// const likesCount = userModalElement.querySelector('.likes-count');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -27,7 +27,6 @@ const hideModal = () => {
 const renderModal = (photo) => {
   userModalElement.querySelector('.big-picture__img img').src = photo.url;
   userModalElement.querySelector('.social__comment-shown-count').textContent = photo.comments.length;
-  // userModalElement.querySelector('.social__comment-total-count').textContent = comments.length;
   userModalElement.querySelector('.likes-count').textContent = photo.likes;
 };
 
