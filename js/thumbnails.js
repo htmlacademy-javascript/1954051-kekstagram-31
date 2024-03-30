@@ -29,9 +29,7 @@ const photoDescriptions = (photos) => {
 picturesArea.addEventListener('click', (evt) => {
   const currentPictureElement = evt.target.closest('.picture');
   if (currentPictureElement) {
-    evt.preventDefault(); // предотвращаем открытие в новом окне
-    // тут мы должны сопоставить в переменной id фото c id, добавленным через dataset
-    // const currentPhoto =
+    evt.preventDefault();
     const currentId = Number(currentPictureElement.dataset.pictureId);
     const currentPhotoData = localPhotos.find((item) => item.id === currentId);
     openUserModal(currentPhotoData);
