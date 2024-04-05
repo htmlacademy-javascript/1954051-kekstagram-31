@@ -33,14 +33,13 @@ const validateCountHashtags = (value) => getHashtagsArray(value).length <= 5;
 const validateUniqueHashtags = (value) => {
   const hashtags = getHashtagsArray(value);
   const uniqueArray = [...new Set(hashtags)];
-  console.log(uniqueArray);
   return hashtags.length === uniqueArray.length;
 };
 
 const validateHashtags = (value) => {
   const hashtags = getHashtagsArray(value);
-  return hashtags.every((item) => /^#[a-zа-яё0-9]{1,20}$/i.test(item))
-}
+  return hashtags.every((item) => /^#[a-zа-яё0-9]{1,20}$/i.test(item));
+};
 
 
 const validateComment = (value) => value.length <= 20;
