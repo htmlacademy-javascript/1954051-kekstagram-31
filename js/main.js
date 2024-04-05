@@ -1,3 +1,5 @@
+import './form.js';
+
 import { createPhotoDescriptions } from './data.js';
 createPhotoDescriptions();
 
