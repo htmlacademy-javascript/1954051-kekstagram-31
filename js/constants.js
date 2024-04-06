@@ -11,8 +11,8 @@ export const sliderOptionsDefault = {
 };
 export const sliderOptionsChromeSepia = {
   range: {
-    min:0,
-    max:1,
+    min: 0,
+    max: 1,
   },
   start: 1,
   step: 0.1,
@@ -20,8 +20,8 @@ export const sliderOptionsChromeSepia = {
 
 export const sliderOptionsPhobos = {
   range: {
-    min:0,
-    max:3,
+    min: 0,
+    max: 3,
   },
   start: 3,
   step: 0.1,
@@ -29,20 +29,20 @@ export const sliderOptionsPhobos = {
 
 export const sliderOptionsHeat = {
   range: {
-    min:1,
-    max:3,
+    min: 1,
+    max: 3,
   },
   start: 3,
   step: 0.1,
 };
 
-export const EFFECTS = {
-  none: sliderOptionsDefault,
-  chrome: sliderOptionsChromeSepia,
-  sepia: sliderOptionsChromeSepia,
-  marvin: sliderOptionsDefault,
-  phobos: sliderOptionsPhobos,
-  heat: sliderOptionsHeat,
+export const Effects = {
+  NONE: sliderOptionsDefault,
+  CHROME: sliderOptionsChromeSepia,
+  SEPIA: sliderOptionsChromeSepia,
+  MARVIN: sliderOptionsDefault,
+  PHOBOS: sliderOptionsPhobos,
+  HEAT: sliderOptionsHeat,
 };
 
 export const ImgEffects = {

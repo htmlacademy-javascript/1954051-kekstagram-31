@@ -7,13 +7,6 @@ const userModalElement = document.querySelector('.big-picture'); // модаль
 const userModalCloseElement = document.querySelector('.big-picture__cancel'); // кнопка закрытия модального окна
 // const likesCount = userModalElement.querySelector('.likes-count');
 
-const onDocumentKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    closeUserModal();
-  }
-};
-
 const showModal = () => {
   userModalElement.classList.remove('hidden');
   document.body.classList.add('modal-open');
@@ -47,5 +40,12 @@ const closeUserModal = function () {
 userModalCloseElement.addEventListener('click', (evt) => {
   closeUserModal();
 });
+
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeUserModal();
+  }
+};
 
 export { openUserModal };

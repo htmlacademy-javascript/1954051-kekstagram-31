@@ -1,7 +1,7 @@
 import { isEscapeKey } from './utils';
 import { validate, resetValidation } from './validation';
-
-
+import {resetEffects} from './photoEditor.js';
+import { resetScale } from './scale.js';
 
 const uploadFormElement = document.querySelector('.img-upload__form');
 const fileUploadElement = uploadFormElement.querySelector('.img-upload__input');
@@ -44,7 +44,6 @@ const openPhotoEditor = () => {
   pageBody.classList.add('modal-open');
 };
 
-
 const openForm = () => {
   openPhotoEditor();
 
@@ -55,23 +54,25 @@ fileUploadElement.addEventListener('change', () => {
   openForm();
 });
 
-// const closePhotoEditor = () => {
-//   windowElement.classList.add('hidden');
-//   pageBody.classList.remove('modal-open');
-// };
+const closePhotoEditor = () => {
+  windowElement.classList.add('hidden');
+  pageBody.classList.remove('modal-open');
+  resetEffects();
+  resetScale();
+};
 
 const closeForm = () => {
   fileUploadElement.value = '';
   uploadFormElement.reset();
   resetValidation();
-  сlosePhotoEditor();
+  closePhotoEditor();
 
   pageBody.classList.remove('modal-open');
 };
 
 resetButtonElement.addEventListener('click', () => {
   closeForm();
-  document.removedEventListener('keydown', documentKeydownHandler);
+  document.removeEventListener('keydown', documentKeydownHandler);
 });
 
 // validation(
